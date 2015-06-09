@@ -48,23 +48,31 @@
 				<section>
 					<h2>Callback Drag & Drop</h2>
 
-                    <div class="callbackContainer" style="
-                         background-color: white;
-                         height:400px;
-                         text-align:center;
-                         position: relative">
+					<iframe src="callback-drag-and-drop.html"
+							scrolling="no"
+							style="width: 100%; height: 200px;"></iframe>
 
-                        <div class="callbackDragTarget" style="
-                             position:absolute;
-                             border: solid 1px black;
-                             z-index:23;
-                             width: 200px; height: 200px">
-                        </div>
-                    </div>
+					<pre><code data-trim>
+var dragTarget = document.querySelectorAll(".callbackDragTarget")[0];
+var dragging = false;
+var contactPoint;
 
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+dragTarget.addEventListener("mousedown", function (ev) {
+  dragging = true;
+  contactPoint = ev;
+});
+
+document.addEventListener("mousemove", function (dragPoint) {
+  if (dragging) {
+    dragTarget.style.left = dragPoint.clientX - contactPoint.offsetX + "px";
+    dragTarget.style.top = dragPoint.clientY - contactPoint.offsetY + "px";
+  }
+});
+
+dragTarget.addEventListener("mouseup", function () {
+  dragging = false;
+});
+					</code></pre>
 				</section>
 
 				<!-- Example of nested vertical slides -->
@@ -419,7 +427,6 @@ Reveal.addEventListener( 'customevent', function() {
 
 		</script>
 
-        <script src="callback-drag-and-drop.js"></script>
 
 	</body>
 </html>

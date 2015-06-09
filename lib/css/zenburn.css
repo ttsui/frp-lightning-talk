@@ -113,5 +113,6 @@ based on dark.css by Ivan Sagalaev
 .xml .css,
 .xml .hljs-cdata {
   opacity: 0.5;
+  font-size: 0.3em;
 }
 

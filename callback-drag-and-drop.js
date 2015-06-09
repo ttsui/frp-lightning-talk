@@ -1,26 +1,22 @@
 
 (function() {
     var dragTarget = document.querySelectorAll(".callbackDragTarget")[0];
-    var container = document.querySelectorAll(".callbackContainer")[0];
 
     var dragging = false;
     var contactPoint;
     dragTarget.addEventListener("mousedown", function (ev) {
         dragging = true;
         contactPoint = ev;
-        console.log(ev);
     });
 
-    container.addEventListener("mousemove", function (dragPoint) {
-       //console.log(dragPoint)
-        //console.log({ pageX: dragPoint.pageX, pageY: dragPoint.pageY })
+    document.addEventListener("mousemove", function (dragPoint) {
         if (dragging) {
-            dragTarget.style.left = dragPoint.offsetX - contactPoint.offsetX + "px";
-            dragTarget.style.top = dragPoint.offsetY - contactPoint.offsetY + "px";
+            dragTarget.style.left = dragPoint.clientX - contactPoint.offsetX + "px";
+            dragTarget.style.top = dragPoint.clientY - contactPoint.offsetY + "px";
         }
     });
 
-    container.addEventListener("mouseup", function () {
+    dragTarget.addEventListener("mouseup", function () {
         dragging = false;
     })
 })();
