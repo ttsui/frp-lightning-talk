@@ -1,17 +1,21 @@
 (function() {
-    var dragStart,
-        draggable = document.querySelectorAll(".draggable")[0],
-        mouseUp = Rx.Observable.fromEvent(draggable, "mouseup"),
-        mouseDown = Rx.Observable.fromEvent(draggable, "mousedown"),
+    var monkey = document.querySelectorAll(".monkey")[0],
+        mouseDown = Rx.Observable.fromEvent(monkey, "mousedown"),
+        mouseUp = Rx.Observable.fromEvent(monkey, "mouseup"),
         mouseMove = Rx.Observable.fromEvent(document, "mousemove");
 
-    var mouseDrags = mouseDown.concatMap(function(ev) {
-        dragStart = ev;
-        return mouseMove.takeUntil(mouseUp);
-    });
-
-    mouseDrags.forEach(function(event) {
-        draggable.style.left = event.clientX - dragStart.offsetX + "px";
-        draggable.style.top = event.clientY - dragStart.offsetY + "px";
+    mouseDown.concatMap(function(mouseDownEvent) {
+        return mouseMove
+            .map(function(mouseMoveEvent) {
+                return {
+                    left: mouseMoveEvent.clientX - mouseDownEvent.offsetX,
+                    top: mouseMoveEvent.clientY - mouseDownEvent.offsetY
+                };
+            })
+            .takeUntil(mouseUp);
+    })
+    .forEach(function(mouseDrag) {
+        monkey.style.left = mouseDrag.left + "px";
+        monkey.style.top = mouseDrag.top + "px";
     });
 })();

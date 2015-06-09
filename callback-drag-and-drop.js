@@ -1,22 +1,22 @@
 
 (function() {
-    var isDragging = false,
-        dragStart,
-        draggable = document.querySelectorAll(".draggable")[0];
+    var monkey = document.querySelectorAll(".monkey")[0],
+        isDragging = false,
+        dragStart;
 
-    draggable.addEventListener("mousedown", function (event) {
+    monkey.addEventListener("mousedown", function(mouseDownEvent) {
         isDragging = true;
-        dragStart = event;
+        dragStart = mouseDownEvent;
     });
 
-    document.addEventListener("mousemove", function (event) {
+    document.addEventListener("mousemove", function(mouseMoveEvent) {
         if (isDragging) {
-            draggable.style.left = event.clientX - dragStart.offsetX + "px";
-            draggable.style.top = event.clientY - dragStart.offsetY + "px";
+            monkey.style.left = mouseMoveEvent.clientX - dragStart.offsetX + "px";
+            monkey.style.top = mouseMoveEvent.clientY - dragStart.offsetY + "px";
         }
     });
 
-    draggable.addEventListener("mouseup", function () {
+    monkey.addEventListener("mouseup", function() {
         isDragging = false;
     });
 })();
