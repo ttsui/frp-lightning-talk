@@ -53,53 +53,59 @@
 							style="width: 100%; height: 200px;"></iframe>
 
 					<pre class="fragment"><code data-trim>
-var dragTarget = document.querySelectorAll(".callbackDragTarget")[0];
-var dragging = false;
-var contactPoint;
-					</code></pre>
+var isDragging = false,
+    dragStart,
+    draggable = document.querySelectorAll(".callbackDragTarget")[0];
+                    </code></pre>
 					<pre class="fragment"><code data-trim>
-dragTarget.addEventListener("mousedown", function (ev) {
-  dragging = true;
-  contactPoint = ev;
+draggable.addEventListener("mousedown", function (event) {
+    isDragging = true;
+    dragStart = event;
 });
 
-document.addEventListener("mousemove", function (dragPoint) {
-  if (dragging) {
-    dragTarget.style.left = dragPoint.clientX - contactPoint.offsetX + "px";
-    dragTarget.style.top = dragPoint.clientY - contactPoint.offsetY + "px";
-  }
+document.addEventListener("mousemove", function (event) {
+    if (isDragging) {
+        draggable.style.left = event.clientX - dragStart.offsetX + "px";
+        draggable.style.top = event.clientY - dragStart.offsetY + "px";
+    }
 });
 
-dragTarget.addEventListener("mouseup", function () {
-  dragging = false;
+draggable.addEventListener("mouseup", function () {
+    isDragging = false;
 });
 					</code></pre>
 				</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+                <section>
+                    <h2>Reactive Drag & Drop</h2>
+
+                    <iframe src="reactive-drag-and-drop.html"
+                            scrolling="no"
+                            style="width: 100%; height: 200px;"></iframe>
+
+					<pre class="fragment"><code data-trim>
+                        var isDragging = false,
+                        dragStart,
+                        draggable = document.querySelectorAll(".callbackDragTarget")[0];
+                    </code></pre>
+					<pre class="fragment"><code data-trim>
+                        draggable.addEventListener("mousedown", function (event) {
+                        isDragging = true;
+                        dragStart = event;
+                        });
+
+                        document.addEventListener("mousemove", function (event) {
+                        if (isDragging) {
+                        draggable.style.left = event.clientX - dragStart.offsetX + "px";
+                        draggable.style.top = event.clientY - dragStart.offsetY + "px";
+                        }
+                        });
+
+                        draggable.addEventListener("mouseup", function () {
+                        isDragging = false;
+                        });
+                    </code></pre>
+                </section>
 
 				<section>
 					<h2>Slides</h2>
