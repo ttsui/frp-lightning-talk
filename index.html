@@ -52,11 +52,12 @@
 							scrolling="no"
 							style="width: 100%; height: 200px;"></iframe>
 
-					<pre><code data-trim>
+					<pre class="fragment"><code data-trim>
 var dragTarget = document.querySelectorAll(".callbackDragTarget")[0];
 var dragging = false;
 var contactPoint;
-
+					</code></pre>
+					<pre class="fragment"><code data-trim>
 dragTarget.addEventListener("mousedown", function (ev) {
   dragging = true;
   contactPoint = ev;
