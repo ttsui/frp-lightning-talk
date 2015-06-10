@@ -223,8 +223,8 @@ mouseDown.concatMap(function(mouseDownEvent) {
 
             // Navigate slides with mouse buttons.
             // Taken from: http://www.raymondcamden.com/2012/10/20/Adding-mouse-click-navigation-to-revealjs
-//            window.addEventListener("mousedown", handleClick, false);
-//            window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+            window.addEventListener("mousedown", handleClick, false);
+            window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
 
             function handleClick(e) {
                 e.preventDefault();
