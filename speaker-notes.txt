@@ -1,2 +1,11 @@
-Slide 1
+Title Slide
 * Hey, who likes functional programming?
+
+Best Friends Forever
+* What if we could bring this love to other aspects of programming, e.g. UI code, AJAX calls.
+
+Callback Drag & Drag
+* Lets see how we would traditionally implement drag and drop with callbacks.
+
+Streams
+* So how do we get the functional love? With streams.

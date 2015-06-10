@@ -61,8 +61,13 @@
 			<div class="slides">
 				<section>
 					<h1>Functional Reactive Programming!</h1>
-					<h3>Wow!</h3>
+					<h2>Wow!</h2>
 				</section>
+
+                <section>
+                    <h2>Best Friends Forever!</h2>
+                    <img src="images/collections_function_love.png" style="padding-top: 4em;">
+                </section>
 
 				<section>
 					<h2>Callback Drag & Drop</h2>
@@ -100,6 +105,16 @@ monkey.addEventListener("mouseup", function() {
 				</section>
 
                 <section>
+                    <h2>Streams</h2>
+                    <img src="images/stream.png">
+                </section>
+
+                <section>
+                    <h2>New Best Friends Forever!</h2>
+                    <img src="images/streams_love_functions.png" style="padding-top: 4em;">
+                </section>
+
+                <section>
                     <h2>Reactive Drag & Drop</h2>
 
                     <iframe src="reactive-drag-and-drop.html"
@@ -115,6 +130,8 @@ var monkey = document.querySelectorAll(".monkey")[0],
                     </code></pre>
 					<pre class="fragment"><code data-trim>
 mouseDown.concatMap(function(mouseDownEvent) {
+                    </code></pre>
+					<pre class="fragment"><code>
     return mouseMove
         .map(function(mouseMoveEvent) {
             return {
@@ -122,10 +139,12 @@ mouseDown.concatMap(function(mouseDownEvent) {
                 top: mouseMoveEvent.clientY - mouseDownEvent.offsetY
             };
         })
+                    </code></pre>
+					<pre class="fragment" style="position: relative; top: -2em;"><code>
         .takeUntil(mouseUp);
 })
                     </code></pre>
-					<pre class="fragment"><code data-trim>
+					<pre class="fragment" style=" position: relative; top: -3em; "><code data-trim>
 .forEach(function(mouseDrag) {
     monkey.style.left = mouseDrag.left + "px";
     monkey.style.top = mouseDrag.top + "px";
