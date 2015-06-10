@@ -133,6 +133,8 @@ mouseDown.concatMap(function(mouseDownEvent) {
                     </code></pre>
 					<pre class="fragment"><code>
     return mouseMove
+                    </code></pre>
+					<pre class="fragment" style="position: relative; top: -2em;"><code>
         .map(function(mouseMoveEvent) {
             return {
                 left: mouseMoveEvent.clientX - mouseDownEvent.offsetX,
@@ -140,11 +142,11 @@ mouseDown.concatMap(function(mouseDownEvent) {
             };
         })
                     </code></pre>
-					<pre class="fragment" style="position: relative; top: -2em;"><code>
+					<pre class="fragment" style="position: relative; top: -4em;"><code>
         .takeUntil(mouseUp);
 })
                     </code></pre>
-					<pre class="fragment" style=" position: relative; top: -3em; "><code data-trim>
+					<pre class="fragment" style=" position: relative; top: -5em; "><code data-trim>
 .forEach(function(mouseDrag) {
     monkey.style.left = mouseDrag.left + "px";
     monkey.style.top = mouseDrag.top + "px";
@@ -183,10 +185,9 @@ mouseDown.concatMap(function(mouseDownEvent) {
                 </section>
 
 				<section style="text-align: left;">
-					<h1>THE END</h1>
+					<h1>NEXT TIME</h1>
 					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+                        Reactive AJAX programming
 					</p>
 				</section>
 
